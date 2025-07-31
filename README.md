@@ -11,18 +11,6 @@ This project provides a robust and secure backend API for managing user authenti
 * **Token Blacklisting:** Enhances security by blacklisting invalidated tokens (e.g., on logout).
 * **Middleware Protection:** Implements various middleware to secure routes and validate requests.
 npm install express cors bcryptjs jsonwebtoken cookie dotenv multer mongoose@6 --save
-
-**API Endpoints**
-Here's a list of the available API endpoints:
-
-Method	Endpoint	Description	Authentication
-POST	/api/admin-register	Registers a new user/admin account.	None
-POST	/api/admin-login	Logs in a user and provides tokens.	None
-POST	/api/admin-logout	Logs out a user and blacklists tokens.	Access Token
-POST	/api/new-access-token	Generates a new access token using refresh.	Refresh Token
-POST	/api/change-password	Allows an authenticated user to change their password.	Access Token
-ALL	/api/update-user-details/:id	Updates an authenticated user's details.	Access Token
-
 **Middleware Explained**
 This API leverages several custom middleware functions to enhance security and handle authentication flows:
 checkBlacklists: Blocks requests if the provided access or refresh token is blacklisted.
@@ -39,6 +27,4 @@ cookie-parser: Middleware to parse Cookie headers.
 dotenv: To load environment variables from a .env file.
 cors: Middleware for enabling Cross-Origin Resource Sharing.
 multer: Middleware for handling multipart/form-data, primarily for file uploads (if applicable in user details).
-
-
 validateToken: Used during logout to identify and blacklist the tokens.
